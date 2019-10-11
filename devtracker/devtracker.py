@@ -75,22 +75,6 @@ class Tracker:
         self.nlp = spacy.load("en_core_web_sm")
         self.final_words_unique = ''
 
-    def jira_login(self, jira_server, jira_user, jira_password):
-        # jira_server = "https://ccp.sys.comcast.net/"
-        # jira_user = "Jlaksh512"
-        # jira_password = "Videoip!23"
-        # jira_server = "https://labweek.atlassian.net/"
-        # jira_user = "viper.labweek@gmail.com"
-        # jira_password = "ElJiEgtUqtf9JXXNqywZF0BC"
-
-        try:
-            jira_server = {'server': jira_server}
-            jira = JIRA(options=jira_server, basic_auth=(jira_user, jira_password))
-        except JIRAError as a:
-            print(a.status_code)
-            raise
-        return jira
-
     def get_issue(self, jira, issue_id):
         x = jira.issue(issue_id)
         # print (x.fields.description)
@@ -207,36 +191,52 @@ class Tracker:
         return outpt
 
     def windfall(self, ISSUE_ID, jira_session):
-        input_value = obj.get_issue(jira_session, ISSUE_ID)
+        input_value = get_issue(jira_session, ISSUE_ID)
         query = obj.get_query(jira_session, input_value)
         value = obj.search_mode(jira_session, query)
         outpt = obj.filter_issue(jira_session, value)
         print(outpt)
         obj.create_issue(jira_session, value)
 
-class StartPoint:
-    def master_fun(self, ISSUE_ID):
-        obj = Tracker()
-        jira_session = obj.jira_login()
-        input_value = obj.get_issue(jira_session, ISSUE_ID)
-        query = obj.get_query(jira_session, input_value)
-        value = obj.search_mode(jira_session, query)
-        outpt = obj.filter_issue(jira_session, value)
-        print(outpt)
-        # obj.create_issue(jira_session, value)
+class Trigger:
+    def __init__(self):
+        self.obj = Tracker()
+    def jira_login(self, jira_server, jira_user, jira_password):
+        # jira_server = "https://ccp.sys.comcast.net/"
+        # jira_user = "Jlaksh512"
+        # jira_password = "Videoip!23"
+        # jira_server = "https://labweek.atlassian.net/"
+        # jira_user = "viper.labweek@gmail.com"
+        # jira_password = "ElJiEgtUqtf9JXXNqywZF0BC"
 
-# if __name__ == '__main__':
-#     # obj = StartPoint()
-#     # issue_id = "VIPER-4888"
-#     # issue_id = "VIPER-4763"
-#     # issue_id = "VIPER-4726"
-#     # issue_id = "VIPER-4578"
-#     issue_id = "VIPER-4563"
-#     # # issue_id = "VPI-1224"
-#     # obj.master_fun(issue_id)
-#     jira_server = "https://ccp.sys.comcast.net/"
-#     jira_user = "Jlaksh512"
-#     jira_password = "Videoip!23"
-#     obj = Tracker()
-#     sess = obj.jira_login(jira_server, jira_user, jira_password)
-#     obj.windfall(issue_id, sess)
+        try:
+            jira_server = {'server': jira_server}
+            jira = JIRA(options=jira_server, basic_auth=(jira_user, jira_password))
+        except JIRAError as a:
+            print(a.status_code)
+            raise
+        return jira
+
+    def windfall(self, ISSUE_ID, jira_session):
+        input_value = self.obj.get_issue(jira_session, ISSUE_ID)
+        query = self.obj.get_query(jira_session, input_value)
+        value = self.obj.search_mode(jira_session, query)
+        outpt = self.obj.filter_issue(jira_session, value)
+        print(outpt)
+        self.obj.create_issue(jira_session, value)
+
+if __name__ == '__main__':
+    # obj = StartPoint()
+    # issue_id = "VIPER-4888"
+    # issue_id = "VIPER-4763"
+    # issue_id = "VIPER-4726"
+    # issue_id = "VIPER-4578"
+    issue_id = "VIPER-4563"
+    # # issue_id = "VPI-1224"
+    # obj.master_fun(issue_id)
+    jira_server = "https://ccp.sys.comcast.net/"
+    jira_user = "Jlaksh512"
+    jira_password = "Videoip!23"
+    asd = Trigger()
+    sess = asd.jira_login(jira_server, jira_user, jira_password)
+    asd.windfall(issue_id, sess)
