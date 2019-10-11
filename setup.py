@@ -31,7 +31,7 @@ test_requirements = [
 
 setup(
     name='dev-work-tracker',
-    version='1.2.1',
+    version='1.2.2',
     description="This is to track developers work rate",
     long_description=readme,
 	#long_description_content_type='text/markdown',

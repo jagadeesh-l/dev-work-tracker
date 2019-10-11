@@ -130,9 +130,6 @@ class Tracker:
         for key, value in input.items():
             if key in mapper:
                 query = mapper[key](value, query)
-                # query = return_value + query
-                # print("sdfsdfs")
-                # print(query)
         query = query + " AND issuetype = Bug"
         print(query)
         return query
@@ -145,16 +142,6 @@ class Tracker:
         return bug_list
 
     def create_issue(self, jira, bug_list):
-        # jira_server = "https://labweek.atlassian.net/"
-        # jira_user = "viper.labweek@gmail.com"
-        # jira_password = "ElJiEgtUqtf9JXXNqywZF0BC"
-        #
-        # try:
-        #     jira_server = {'server': jira_server}
-        #     jira = JIRA(options=jira_server, basic_auth=(jira_user, jira_password))
-        # except JIRAError as a:
-        #     print(a.status_code)
-        #     raise
         projects = jira.projects()
         keys = [project for project in projects]
         print(keys)
@@ -202,9 +189,6 @@ class Trigger:
     def __init__(self):
         self.obj = Tracker()
     def jira_login(self, jira_server, jira_user, jira_password):
-        # jira_server = "https://ccp.sys.comcast.net/"
-        # jira_user = "Jlaksh512"
-        # jira_password = "Videoip!23"
         # jira_server = "https://labweek.atlassian.net/"
         # jira_user = "viper.labweek@gmail.com"
         # jira_password = "ElJiEgtUqtf9JXXNqywZF0BC"
@@ -224,19 +208,3 @@ class Trigger:
         outpt = self.obj.filter_issue(jira_session, value)
         print(outpt)
         self.obj.create_issue(jira_session, value)
-
-if __name__ == '__main__':
-    # obj = StartPoint()
-    # issue_id = "VIPER-4888"
-    # issue_id = "VIPER-4763"
-    # issue_id = "VIPER-4726"
-    # issue_id = "VIPER-4578"
-    issue_id = "VIPER-4563"
-    # # issue_id = "VPI-1224"
-    # obj.master_fun(issue_id)
-    jira_server = "https://ccp.sys.comcast.net/"
-    jira_user = "Jlaksh512"
-    jira_password = "Videoip!23"
-    asd = Trigger()
-    sess = asd.jira_login(jira_server, jira_user, jira_password)
-    asd.windfall(issue_id, sess)
