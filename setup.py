@@ -8,15 +8,15 @@ from setuptools import setup, find_packages
 
 here = path.abspath(path.dirname(__file__))
 
-#with open(path.join(here, 'README.md'), encoding='utf-8') as readme_file:
+#with open(path.join(here, 'PYPI.md'), encoding='utf-8') as readme_file:
 #    readme = readme_file.read()
 #readme = readme.replace('\n\n', '\n')
 
 try:
     import pypandoc
-    readme = pypandoc.convert(path.join(here, 'README.md'), 'rst')
+    readme = pypandoc.convert(path.join(here, 'PYPI.md'), 'rst')
 except(IOError, ImportError):
-    readme = open('README.md').read()
+    readme = open('PYPI.md').read()
 
 
 requirements = [
@@ -31,7 +31,7 @@ test_requirements = [
 
 setup(
     name='dev-work-tracker',
-    version='1.1.7',
+    version='1.1.8',
     description="This is to track developers work rate",
     long_description=readme,
 	#long_description_content_type='text/markdown',

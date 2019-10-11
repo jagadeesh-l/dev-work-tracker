@@ -20,28 +20,24 @@ Install the package by running:
 
 Python standard dependencies:
 
-* .. image:: https://img.shields.io/badge/Python%20Package-jira-blue
-		  :target: https://pypi.org/project/jira/
+[![Jira](https://img.shields.io/badge/Python%20Package-jira-blue)](https://pypi.org/project/jira/)
 
-* .. image:: https://img.shields.io/badge/Python%20Package-spacy-blue
-		  :target: https://pypi.org/project/spacy/
+[![spacy](https://img.shields.io/badge/Python%20Package-spacy-blue)](https://pypi.org/project/spacy/)
+
 
 devtracker
 --------------
-.. image:: https://img.shields.io/badge/Dev-Github-green
-        :target: https://github.com/jagadeesh-l/dev-work-tracker
 
-.. image:: https://img.shields.io/pypi/v/dev-work-tracker.svg
-        :target: https://pypi.python.org/pypi/dev-work-tracker
+[![Github](https://img.shields.io/badge/Dev-Github-green)](https://github.com/jagadeesh-l/dev-work-tracker)
 
-.. image:: https://img.shields.io/pypi/wheel/wheel
-		:target: https://pypi.python.org/pypi/dev-work-tracker
+[![Pypi](https://img.shields.io/pypi/v/dev-work-tracker.svg)](https://pypi.python.org/pypi/dev-work-tracker)
 
-.. image:: https://img.shields.io/pypi/pyversions/jira-client
-		:target: https://www.python.org/downloads/release/python-370/
-		
-.. image:: https://img.shields.io/apm/l/vim-mode
-		:target: https://pypi.python.org/pypi/dev-work-tracker
+[![Wheel](https://img.shields.io/pypi/wheel/wheel)](https://pypi.python.org/pypi/dev-work-tracker)
+
+[![Python version](https://img.shields.io/pypi/pyversions/jira-client)](https://www.python.org/downloads/release/python-370/)
+
+[![Licence](https://img.shields.io/apm/l/vim-mode)](https://pypi.python.org/pypi/dev-work-tracker)
+
 
 This package is to track developers work rate
 
@@ -49,9 +45,28 @@ This package is to track developers work rate
 * Documentation: (COMING SOON!) https://dev-work-tracker.readthedocs.org.
 
 Maintainers
------------
+------------
 
 * Jagadeesh Lakshminarasimhan - jagadeesh_lakshminarasimhan@comcast.com
+
+## USAGE
+
+```python
+
+from devtracker.devtracker import Tracker
+
+jira_server = "https://example.atlassian.net/"
+jira_user = "example@gm.com"
+jira_password = "examplePassW@rd"
+Issue_ID = EXA-0001 #Jira Issue ID
+
+session = Tracker().jira_login(jira_server, jira_user, jira_password)
+Tracker().windfall(Issue_ID, session)
+```
+
+
+
+
 
 
 

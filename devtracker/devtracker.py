@@ -4,6 +4,9 @@ from jira.client import JIRA, JIRAError
 
 
 class FormQuery:
+    '''
+    This class contain forming of query related methods
+    '''
     def __init__(self):
         self.and_val = ' AND '
         self.or_val = ' OR '
@@ -65,11 +68,14 @@ class FormQuery:
         return query
 
 class Tracker:
+    '''
+    This class contain fetching infomation from jira and updating the results in the jira ID.
+    '''
     def __init__(self):
         self.nlp = spacy.load("en_core_web_sm")
         self.final_words_unique = ''
 
-    def jira_login(self, jira_server, jira_user, jira_password):
+    def jira_login(self, jira_server=jira_server, jira_user=jira_user, jira_password=jira_password):
         # jira_server = "https://ccp.sys.comcast.net/"
         # jira_user = "Jlaksh512"
         # jira_password = "Videoip!23"
@@ -206,8 +212,7 @@ class Tracker:
         value = obj.search_mode(jira_session, query)
         outpt = obj.filter_issue(jira_session, value)
         print(outpt)
-        # obj.create_issue(jira_session, value)
-
+        obj.create_issue(jira_session, value)
 
 class StartPoint:
     def master_fun(self, ISSUE_ID):
