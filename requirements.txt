@@ -1,1 +1,2 @@
-click
+jira >= 2.0.0
+spacy >= 2.2.1

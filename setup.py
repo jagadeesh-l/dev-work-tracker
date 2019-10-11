@@ -1,4 +1,4 @@
-"""A setuptools based setup module for [A[Bdev-work-tracker"""
+"""A setuptools based setup module for dev-work-tracker"""
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -6,19 +6,23 @@ from codecs import open
 from os import path
 from setuptools import setup, find_packages
 
-import versioneer
-
 here = path.abspath(path.dirname(__file__))
 
-with open(path.join(here, 'README.rst'), encoding='utf-8') as readme_file:
-    readme = readme_file.read()
+#with open(path.join(here, 'README.md'), encoding='utf-8') as readme_file:
+#    readme = readme_file.read()
+#readme = readme.replace('\n\n', '\n')
 
-with open(path.join(here, 'HISTORY.rst'), encoding='utf-8') as history_file:
-    history = history_file.read().replace('.. :changelog:', '')
+try:
+    import pypandoc
+    readme = pypandoc.convert(path.join(here, 'README.md'), 'rst')
+except(IOError, ImportError):
+    readme = open('README.md').read()
+
 
 requirements = [
     # TODO: put package requirements here
-    'click',
+    'jira',
+	'spacy',
 ]
 
 test_requirements = [
@@ -26,20 +30,22 @@ test_requirements = [
 ]
 
 setup(
-    name='[A[Bdev-work-tracker',
-    version=versioneer.get_version(),
-    cmdclass=versioneer.get_cmdclass(),
+    name='dev-work-tracker',
+    version='1.1.7',
     description="This is to track developers work rate",
-    long_description=readme + '\n\n' + history,
+    long_description=readme,
+	#long_description_content_type='text/markdown',
     author="Jagadeesh Lakshminarasimhan",
     author_email='jagadeeshlaks@gmail.com',
     url='https://github.com/jagadeesh-l/dev-work-tracker',
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
-    entry_points={
-        'console_scripts':[
-            'dev-work-tracker=dev-work-tracker.cli:cli',
-            ],
-        },
+    packages = find_packages(),
+    package_data={},
+    data_files=[],
+    #entry_points={
+    #    'console_scripts':[
+    #        'dev-work-tracker=dev-work-tracker.cli:cli',
+    #        ],
+    #    },
     include_package_data=True,
     install_requires=requirements,
     license="MIT",
@@ -48,13 +54,12 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        "Programming Language :: Python :: 2",
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+		'Programming Language :: Python :: 3.6',
+		'Programming Language :: Python :: 3.7',
     ],
-    test_suite='tests',
     tests_require=test_requirements,
 )
