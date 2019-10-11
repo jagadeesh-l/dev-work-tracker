@@ -75,7 +75,7 @@ class Tracker:
         self.nlp = spacy.load("en_core_web_sm")
         self.final_words_unique = ''
 
-    def jira_login(self, jira_server=jira_server, jira_user=jira_user, jira_password=jira_password):
+    def jira_login(self, jira_server, jira_user, jira_password):
         # jira_server = "https://ccp.sys.comcast.net/"
         # jira_user = "Jlaksh512"
         # jira_password = "Videoip!23"
