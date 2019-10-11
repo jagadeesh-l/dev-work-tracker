@@ -47,7 +47,7 @@ This package is to track developers work rate
 Maintainers
 ------------
 
-* Jagadeesh Lakshminarasimhan - jagadeesh_lakshminarasimhan@comcast.com
+* Jagadeesh Lakshminarasimhan - jagadeeshlaks@gmail.com
 
 ## USAGE
 
