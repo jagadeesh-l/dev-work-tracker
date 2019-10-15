@@ -58,7 +58,7 @@ from devtracker.devtracker import Trigger
 jira_server = "https://example.atlassian.net/"
 jira_user = "example@gm.com"
 jira_password = "examplePassW@rd"
-Issue_ID = EXAM-1234 #Jira Issue ID
+Issue_ID = "EXAM-1234" #Jira Issue ID
 
 session = Trigger().jira_login(jira_server, jira_user, jira_password)
 Trigger().windfall(Issue_ID, session)
