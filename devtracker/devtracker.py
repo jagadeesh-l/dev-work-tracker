@@ -12,6 +12,13 @@ class FormQuery:
         self.or_val = ' OR '
 
     def set_assignee(self, value, query):
+        '''set_assignee method of FormQuery
+
+        on forming of jira query, assignee of the ticket will be added to the ticket.
+        :param value: name of the assignee
+        :param query: jira search query
+        :return: search query with added assignee to it.
+        '''
         if query == '':
             query = 'assignee in ({})'.format(value)
         else:
@@ -19,6 +26,13 @@ class FormQuery:
         return query
 
     def set_text(self, value, query):
+        '''set_value method of FormQuery
+
+        on forming of jira query, text element for the searching will be added to the ticket.
+        :param value: set of string to be searched
+        :param query: jira search query
+        :return: search query with added search text to it.
+        '''
         # "project = VSM AND resolution = Unresolved AND labels = AKM AND assignee in (jagadeeshlaks) ORDER BY priority DESC"
         'text ~ "abc"'
         flag = 1
@@ -39,6 +53,13 @@ class FormQuery:
         return query
 
     def set_component(self, value, query):
+        '''set_component method of FormQuery
+
+        on forming of jira query, component for the searching will be added to the ticket.
+        :param value: set of string to be searched
+        :param query: jira search query
+        :return: search query with added search text to it.
+        '''
         for component in value:
             if query == '':
                 query = 'component = {}'.format(component)
