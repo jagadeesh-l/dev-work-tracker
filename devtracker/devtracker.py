@@ -12,9 +12,9 @@ class FormQuery:
         self.or_val = ' OR '
 
     def set_assignee(self, value, query):
-        '''set_assignee method of FormQuery
+        '''set_assignee is method of FormQuery
 
-        on forming of jira query, assignee of the ticket will be added to the ticket.
+        on forming of jira query, assignee of the ticket will be added to the query.
         :param value: name of the assignee
         :param query: jira search query
         :return: search query with added assignee to it.
@@ -26,9 +26,9 @@ class FormQuery:
         return query
 
     def set_text(self, value, query):
-        '''set_value method of FormQuery
+        '''set_value is method of FormQuery
 
-        on forming of jira query, text element for the searching will be added to the ticket.
+        on forming of jira query, text element for the searching will be added to the query.
         :param value: set of string to be searched
         :param query: jira search query
         :return: search query with added search text to it.
@@ -53,12 +53,12 @@ class FormQuery:
         return query
 
     def set_component(self, value, query):
-        '''set_component method of FormQuery
+        '''set_component is method of FormQuery
 
-        on forming of jira query, component for the searching will be added to the ticket.
-        :param value: set of string to be searched
+        on forming of jira query, component for the ticket will be added to the query.
+        :param value: component of the ticket
         :param query: jira search query
-        :return: search query with added search text to it.
+        :return: search query with added component to it.
         '''
         for component in value:
             if query == '':
@@ -68,6 +68,13 @@ class FormQuery:
         return query
 
     def set_label(self, value, query):
+        '''set_label is method of FormQuery
+
+        on forming of jira query, label for the ticket will be added to the query.
+        :param value: label of the ticket
+        :param query: jira search query
+        :return: search query with added label to it.
+        '''
         for pos in range(len(value)):
             if pos == 0:
                 if query == '':
@@ -82,6 +89,13 @@ class FormQuery:
         return query
 
     def set_project(self, value, query):
+        '''set_label is method of FormQuery
+
+        on forming of jira query, project for the ticket will be added to the query.
+        :param value: project name of the ticket
+        :param query: jira search query
+        :return: search query with added project name to it.
+        '''
         if query == '':
             query = 'project = {}'.format(value)
         else:
@@ -97,6 +111,13 @@ class Tracker:
         self.final_words_unique = ''
 
     def get_issue(self, jira, issue_id):
+        '''get_issue is method of Tracker
+
+        This method will get all the information about the given jira ticket
+        :param jira: instance of jira
+        :param issue_id: jira ticket
+        :return: Dictionary will be returned with all the information of the given ticket.
+        '''
         x = jira.issue(issue_id)
         # print (x.fields.description)
         # print (x.fields.summary)
@@ -142,6 +163,13 @@ class Tracker:
         return dict_value
 
     def get_query(self, jira, input):
+        '''get_query is method of Tracker
+
+        This method will form query on basis of input result from get_issue method.
+        :param jira: instance of jira
+        :param input: Dictionary(output of get_issue method) of jira information
+        :return: well formed jira search query
+        '''
         query = ''
         mapper = {'search': FormQuery().set_text,
                   'assignee': FormQuery().set_assignee,
@@ -156,6 +184,13 @@ class Tracker:
         return query
 
     def search_mode(self, jira, query):
+        '''search_mode is method of Tracker
+
+        This method will execute the query and get the results in list format.
+        :param jira: instance of jira
+        :param query: jira search query
+        :return: list of bug from the search query.
+        '''
         x = jira.search_issues(query)
         bug_list = []
         for each in x:
@@ -163,6 +198,12 @@ class Tracker:
         return bug_list
 
     def create_issue(self, jira, bug_list):
+        '''create_issue is method of Tracker
+
+        This method will create an issue in the given ticket as sub-task. The issue will contain all the related bugs from the assignee.
+        :param jira: instance of jira
+        :param bug_list: an output from the filter_issue method.
+        '''
         projects = jira.projects()
         keys = [project for project in projects]
         print(keys)
@@ -177,6 +218,13 @@ class Tracker:
         print(new_issue)
 
     def filter_issue(self, jira, item_list):
+        '''filter_issue is method of Tracker
+
+        This method will filter the set of bug by match the most content using NLP(spacy-python package).
+        :param jira: instance of jira
+        :param item_list: an output from the search_mode method.
+        :return: set of list of filtered bugs using NPL concept.
+        '''
         filter_dict = {}
         for issue_id in item_list:
             x = jira.issue(issue_id)
@@ -198,18 +246,29 @@ class Tracker:
             outpt.append(stuff_list)
         return outpt
 
-    def windfall(self, ISSUE_ID, jira_session):
-        input_value = get_issue(jira_session, ISSUE_ID)
-        query = obj.get_query(jira_session, input_value)
-        value = obj.search_mode(jira_session, query)
-        outpt = obj.filter_issue(jira_session, value)
-        print(outpt)
-        obj.create_issue(jira_session, value)
+    # def windfall(self, ISSUE_ID, jira_session):
+    #     input_value = get_issue(jira_session, ISSUE_ID)
+    #     query = obj.get_query(jira_session, input_value)
+    #     value = obj.search_mode(jira_session, query)
+    #     outpt = obj.filter_issue(jira_session, value)
+    #     print(outpt)
+    #     obj.create_issue(jira_session, value)
 
 class Trigger:
+    """
+    This class is a initial place where it will trigger the script.
+    """
     def __init__(self):
         self.obj = Tracker()
     def jira_login(self, jira_server, jira_user, jira_password):
+        '''jira_login is method of Trigger
+
+        This method will authenticate with given jira credentials
+        :param jira_server: server name of the jira
+        :param jira_user: username/userID of the jira
+        :param jira_password: password of jira
+        :return: instance of the user's jira
+        '''
         # jira_server = "https://labweek.atlassian.net/"
         # jira_user = "viper.labweek@gmail.com"
         # jira_password = "ElJiEgtUqtf9JXXNqywZF0BC"
@@ -223,6 +282,12 @@ class Trigger:
         return jira
 
     def windfall(self, ISSUE_ID, jira_session):
+        '''windfall is a method of Trigger
+
+        This is the master flow trigger method. This will initiate complete process of the script
+        :param ISSUE_ID: jira task-ID(use case for the development)
+        :param jira_session: instance of the jira
+        '''
         input_value = self.obj.get_issue(jira_session, ISSUE_ID)
         query = self.obj.get_query(jira_session, input_value)
         value = self.obj.search_mode(jira_session, query)
