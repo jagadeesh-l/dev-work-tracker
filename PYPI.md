@@ -37,8 +37,8 @@ devtracker
 .. image:: https://img.shields.io/pypi/wheel/wheel
 		:target: https://pypi.python.org/pypi/dev-work-tracker
 
-.. image:: https://img.shields.io/pypi/pyversions/jira-client
-		:target: https://www.python.org/downloads/release/python-370/
+.. image:: https://img.shields.io/badge/python-3.0%20%7C%203.1%20%7C%203.2%20%7C%203.3%20%7C%203.4%20%7C%203.5%20%7C%203.6%20%7C%203.7%20%7C%203.8-blue
+		:target: https://www.python.org/downloads/release/python-380/
 		
 .. image:: https://img.shields.io/apm/l/vim-mode
 		:target: https://pypi.python.org/pypi/dev-work-tracker
@@ -56,6 +56,19 @@ Maintainers
 
 USAGE
 ------
+
+```python
+
+from devtracker.devtracker import Trigger
+
+jira_server = "https://example.atlassian.net/"
+jira_user = "example@gm.com"
+jira_password = "examplePassW@rd"
+Issue_ID = "EXAM-1234" #Jira Issue ID
+
+session = Trigger().jira_login(jira_server, jira_user, jira_password)
+Trigger().windfall(Issue_ID, session)
+```
 
 .. image:: https://img.shields.io/badge/LINK-GitHub-orange
 		:target: https://github.com/jagadeesh-l/dev-work-tracker

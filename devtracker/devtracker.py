@@ -33,8 +33,8 @@ class FormQuery:
         :param query: jira search query
         :return: search query with added search text to it.
         '''
-        # "project = VSM AND resolution = Unresolved AND labels = AKM AND assignee in (jagadeeshlaks) ORDER BY priority DESC"
-        'text ~ "abc"'
+        # "project = ARM AND resolution = Unresolved AND labels = ATM AND assignee in (jagdeeshlaks) ORDER BY priority DESC"
+        # 'text ~ "abc"'
         flag = 1
         for noun in value:
             if flag:
@@ -245,14 +245,6 @@ class Tracker:
             stuff_list[1] = stuff_list[1][0]
             outpt.append(stuff_list)
         return outpt
-
-    # def windfall(self, ISSUE_ID, jira_session):
-    #     input_value = get_issue(jira_session, ISSUE_ID)
-    #     query = obj.get_query(jira_session, input_value)
-    #     value = obj.search_mode(jira_session, query)
-    #     outpt = obj.filter_issue(jira_session, value)
-    #     print(outpt)
-    #     obj.create_issue(jira_session, value)
 
 class Trigger:
     """

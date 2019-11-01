@@ -34,7 +34,7 @@ devtracker
 
 [![Wheel](https://img.shields.io/pypi/wheel/wheel)](https://pypi.python.org/pypi/dev-work-tracker)
 
-[![Python version](https://img.shields.io/pypi/pyversions/jira-client)](https://www.python.org/downloads/release/python-370/)
+[![Python version](https://img.shields.io/badge/python-3.0%20%7C%203.1%20%7C%203.2%20%7C%203.3%20%7C%203.4%20%7C%203.5%20%7C%203.6%20%7C%203.7%20%7C%203.8-blue)](https://www.python.org/downloads/release/python-380/)
 
 [![Licence](https://img.shields.io/apm/l/vim-mode)](https://pypi.python.org/pypi/dev-work-tracker)
 
