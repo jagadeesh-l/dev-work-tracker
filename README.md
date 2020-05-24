@@ -41,7 +41,7 @@ devtracker
 
 This package is to track developers work rate
 
-* Free software: [Yet to get]
+* Free software: MIT License
 * Documentation: (COMING SOON!) https://dev-work-tracker.readthedocs.org.
 
 Maintainers
