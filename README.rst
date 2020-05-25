@@ -19,23 +19,25 @@ Install the package by running:
 
 	pip install dev-work-tracker
 
-
 OR
 
 .. code::
+
 	shell sudo python3 setup.py install
 
 
 Install the dependencies:
+--------------------------
 
-This is a simple example::
+.. code::
 
-pip install jira
-pip install spacy
-python -m spacy download en_core_web_sm
+	pip install jira
+	pip install spacy
+	python -m spacy download en_core_web_sm
 
 
 Python standard dependencies:
+------------------------------
 
 .. image:: https://img.shields.io/badge/Python%20Package-jira-blue
 	:target: https://pypi.org/project/jira/
