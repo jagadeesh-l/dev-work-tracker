@@ -11,9 +11,9 @@ here = path.abspath(path.dirname(__file__))
 
 try:
     import pypandoc
-    readme = pypandoc.convert(path.join(here, 'PYPI.md'), 'rst')
+    readme = pypandoc.convert(path.join(here, 'README.rst'), 'rst')
 except(IOError, ImportError):
-    readme = open('PYPI.md').read()
+    readme = open('README.rst').read()
 
 
 requirements = [
@@ -28,7 +28,7 @@ test_requirements = [
 
 setup(
     name='dev-work-tracker',
-    version='1.4',
+    version='1.4.3',
     description="This is to track developers work rate",
     long_description=readme,
 	#long_description_content_type='text/markdown',
