@@ -15,17 +15,23 @@ Dependencies
 
 Install the package by running:
 
-* ```pip install dev-work-tracker```
+```bash
+pip install dev-work-tracker
+```
 
 OR
 
-* ```shell sudo python3 setup.py install```
+```bash
+shell sudo python3 setup.py install
+```
 
 Install the dependencies:
 
-* ```pip install jira```
-* ```pip install spacy```
-* ```python -m spacy download en_core_web_sm```
+```bash
+pip install jira
+pip install spacy
+python -m spacy download en_core_web_sm
+```
 
 Python standard dependencies:
 
