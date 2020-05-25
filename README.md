@@ -62,17 +62,17 @@ Maintainers
 
 ```python
 
-	from devtracker.devtracker import Trigger
+from devtracker.devtracker import Trigger
 
-	jira_server = "https://example.atlassian.net/"
-	jira_user = "example@gm.com"
-	jira_password = "examplePassW@rd"
-	Issue_ID = "EXAM-1234" #Jira Issue ID
-	description = 'This is sample description about the issue'
+jira_server = "https://example.atlassian.net/"
+jira_user = "example@gm.com"
+jira_password = "examplePassW@rd"
+Issue_ID = "EXAM-1234" #Jira Issue ID
+description = 'This is sample description about the issue'
 
-	session = Trigger().jira_login(jira_server, jira_user, jira_password)
-	out = Trigger().windfall(Issue_ID, session)
-	print(out)
+session = Trigger().jira_login(jira_server, jira_user, jira_password)
+out = Trigger().windfall(Issue_ID, session)
+print(out)
 	
 ```
 
