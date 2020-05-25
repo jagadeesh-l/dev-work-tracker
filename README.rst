@@ -22,7 +22,7 @@ Install the package by running:
 
 OR
 
-::
+.. code::
 shell sudo python3 setup.py install
 
 
