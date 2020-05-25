@@ -15,13 +15,13 @@ Dependencies
 
 Install the package by running:
 
-This is a simple example::
+::
 pip install dev-work-tracker
 
 
 OR
 
-This is a simple example::
+::
 shell sudo python3 setup.py install
 
 
