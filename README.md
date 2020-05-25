@@ -60,7 +60,7 @@ Maintainers
 
 ## USAGE
 
-.. code-block:: python
+```python
 
 	from devtracker.devtracker import Trigger
 
@@ -73,6 +73,8 @@ Maintainers
 	session = Trigger().jira_login(jira_server, jira_user, jira_password)
 	out = Trigger().windfall(Issue_ID, session)
 	print(out)
+	
+```
 
 
 
