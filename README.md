@@ -35,10 +35,11 @@ python -m spacy download en_core_web_sm
 
 Python standard dependencies:
 
-[![Jira](https://img.shields.io/badge/Python%20Package-jira-blue)](https://pypi.org/project/jira/)
+.. image:: (https://img.shields.io/badge/Python%20Package-jira-blue)
+	:target: (https://pypi.org/project/jira/)
 
-[![spacy](https://img.shields.io/badge/Python%20Package-spacy-blue)](https://pypi.org/project/spacy/)
-
+.. image:: (https://img.shields.io/badge/Python%20Package-spacy-blue)
+	:target: (https://pypi.org/project/spacy/)
 
 devtracker
 --------------
