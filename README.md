@@ -71,7 +71,7 @@ Issue_ID = "EXAM-1234" #Jira Issue ID
 description = 'This is sample description about the issue'
 
 session = Trigger().jira_login(jira_server, jira_user, jira_password)
-out = Trigger().windfall(Issue_ID, session)
+out = Trigger().windfall(Issue_ID, session, description)
 print(out)
 	
 ```
