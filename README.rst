@@ -15,9 +15,9 @@ Dependencies
 
 Install the package by running:
 
-::
+.. code::
 
-pip install dev-work-tracker
+	pip install dev-work-tracker
 
 
 OR
