@@ -1,0 +1,12 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+dev_work_tracker.egg-info/PKG-INFO
+dev_work_tracker.egg-info/SOURCES.txt
+dev_work_tracker.egg-info/dependency_links.txt
+dev_work_tracker.egg-info/requires.txt
+dev_work_tracker.egg-info/top_level.txt
+devtracker/__init__.py
+devtracker/devtracker.py

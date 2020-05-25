@@ -16,7 +16,16 @@ Dependencies
 Install the package by running:
 
 * ```pip install dev-work-tracker```
+
+OR
+
 * ```shell sudo python3 setup.py install```
+
+Install the dependencies:
+
+* ```pip install jira```
+* ```pip install spacy```
+* ```python -m spacy download en_core_web_sm```
 
 Python standard dependencies:
 
@@ -51,18 +60,20 @@ Maintainers
 
 ## USAGE
 
-```python
+.. code-block:: python
 
-from devtracker.devtracker import Trigger
+	from devtracker.devtracker import Trigger
 
-jira_server = "https://example.atlassian.net/"
-jira_user = "example@gm.com"
-jira_password = "examplePassW@rd"
-Issue_ID = "EXAM-1234" #Jira Issue ID
+	jira_server = "https://example.atlassian.net/"
+	jira_user = "example@gm.com"
+	jira_password = "examplePassW@rd"
+	Issue_ID = "EXAM-1234" #Jira Issue ID
+	description = 'This is sample description about the issue'
 
-session = Trigger().jira_login(jira_server, jira_user, jira_password)
-Trigger().windfall(Issue_ID, session)
-```
+	session = Trigger().jira_login(jira_server, jira_user, jira_password)
+	out = Trigger().windfall(Issue_ID, session)
+	print(out)
+
 
 
 

@@ -8,9 +8,6 @@ from setuptools import setup, find_packages
 
 here = path.abspath(path.dirname(__file__))
 
-#with open(path.join(here, 'PYPI.md'), encoding='utf-8') as readme_file:
-#    readme = readme_file.read()
-#readme = readme.replace('\n\n', '\n')
 
 try:
     import pypandoc
@@ -31,7 +28,7 @@ test_requirements = [
 
 setup(
     name='dev-work-tracker',
-    version='1.2.2',
+    version='1.4',
     description="This is to track developers work rate",
     long_description=readme,
 	#long_description_content_type='text/markdown',
@@ -41,11 +38,6 @@ setup(
     packages = find_packages(),
     package_data={},
     data_files=[],
-    #entry_points={
-    #    'console_scripts':[
-    #        'dev-work-tracker=dev-work-tracker.cli:cli',
-    #        ],
-    #    },
     include_package_data=True,
     install_requires=requirements,
     license="MIT",
