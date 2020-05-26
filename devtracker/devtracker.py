@@ -125,7 +125,12 @@ class Tracker:
         try:
             assignee_name = x.fields.assignee.name
         except:
-            assignee_name = x.fields.assignee.accountId
+            try:
+                assignee_name = x.fields.assignee.accountId
+            except AttributeError as a:
+                print("Assignee name is NoneType, so cannot proceed further")
+                return
+
         component = []
         for field in (x.fields.components):
              component.append(field.name)
@@ -158,7 +163,8 @@ class Tracker:
                       'labels': labels,
                       'project': x.fields.project.key,
                       'URL': URL + URL_append,
-                      'task_id': x.key
+                      'task_id': x.key,
+                      'display_name': x.fields.assignee.displayName,
                       }
         return dict_value
 
@@ -210,7 +216,7 @@ class Tracker:
         issue_dict = {
             'project': {'key': input_value['project']},
             'summary': 'Please make sure this as Prerequisites for dev-test',
-            'description': 'This {} is your previous bug fix in this components, please make sure this issue is not rendering in your current fix \n {} \n Added Note: \n \n {}'.format(bug_list, input_value['URL'], description),
+            'description': 'This {} is your previous bugs in this components, please make sure this issue is not rendering in your current task. \n Added Note: \n \n {}'.format(bug_list, description),
             'issuetype': {'name': 'Sub-task'},
             'assignee': {'name': input_value['assignee']},
             'parent': {'key': input_value['task_id']},
@@ -282,9 +288,14 @@ class Trigger:
         This is the master flow trigger method. This will initiate complete process of the script
         :param ISSUE_ID: jira task-ID(use case for the development)
         :param jira_session: instance of the jira
+        :param description: an extra note to be added to the discription
         '''
         input_value = self.obj.get_issue(jira_session, ISSUE_ID)
+        if input_value == None:
+            return
         query = self.obj.get_query(jira_session, input_value)
         value = self.obj.search_mode(jira_session, query)
         outpt = self.obj.filter_issue(jira_session, value)
+        if len(outpt) <= 1:
+            return ('There is no history of duplicate bugs found for the assignee - {} on his current task, You are good to go.'.format(input_value['display_name']))
         return (self.obj.create_issue(jira_session, value, input_value, description))
