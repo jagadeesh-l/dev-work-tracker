@@ -7,7 +7,19 @@ Dated: 10/02/2019
 Overview
 --------
 
-* Create an issue under task(input) which contains history of developer's bug for current module.
+When comes to SDLC, time is very efficient. This "Dev-work-tracker" is the efficient way to reduce time specially on testing phase. 
+
+In many scenarios same bug been caught at different releases by tester. which means developer can make same mistakes gain and gain. The frequency of the developer tent to concentrate lesser on not interesting stuff.Example many developers excited about writing codes but same excitement will be lacked when comes to writing unit test code. This lead to cause more bugs in testing cycle.
+
+In this case, "Dev-work-tracker" will helps to track assignee's bug history and compare them (using natual language process - NLP)  with his current task then it will create a sub-task in this current task stating - "You have more than one bug history related to current task, please make sure this won't render in current task".
+
+Example:
+Current Task - UI Developent - positioning img.
+
+If Assignee's Bug History - 10
+		* Out of 10, 4 is related to UI Development
+		* Out of 4, 2 is related to positioning.
+So this 2 positioning bugs will send it to Assignee's eye, so that he can avoid this mistake again in his current work.
 
 
 Dependencies
